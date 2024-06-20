@@ -1,71 +1,83 @@
-# django-rest-status-intellisense README
+# VS Code Extension for HTTP Status Code Suggestions
 
-This is the README for your extension "django-rest-status-intellisense". After writing up a brief description, we recommend including the following sections.
+This Visual Studio Code extension provides inline suggestions for HTTP status codes from the `status` module of Django REST Framework.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- Provides inline suggestions for HTTP status codes when working in `.py` files.
+- Automatically triggers suggestions after typing `status.`.
+- Supports all HTTP status codes, categorized into:
+  - Informational (1xx)
+  - Successful (2xx)
+  - Redirection (3xx)
+  - Client Error (4xx)
+  - Server Error (5xx)
 
-For example if there is an image subfolder under your extension project workspace:
+## Installation
 
-\!\[feature X\]\(images/feature-x.png\)
+1. Clone this repository.
+2. Open the cloned repository in Visual Studio Code.
+3. Press `F5` to open a new VS Code window with your extension loaded.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+## Usage
 
-## Requirements
+1. Ensure you're working in a `.py` file.
+2. Import the `status` module from `rest_framework`:
+   ```python
+   from rest_framework import status
+   ```
+3. Start typing `status.` and the suggestions for HTTP status codes will appear.
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+## Development
 
-## Extension Settings
+### Prerequisites
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+- Node.js (version 14 or higher)
+- npm (version 6 or higher)
 
-For example:
+### Setup
 
-This extension contributes the following settings:
+1. Install dependencies:
+   ```sh
+   npm install
+   ```
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+2. Open the extension in VS Code:
+   ```sh
+   code .
+   ```
 
-## Known Issues
+### Running the Extension
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+Press `F5` to open a new VS Code window with your extension loaded.
 
-## Release Notes
+### Testing
 
-Users appreciate release notes as you update your extension.
+To run the tests, use the following command:
+```sh
+npm test
+```
 
-### 1.0.0
+### Creating a Build
 
-Initial release of ...
+To package the extension for distribution, run:
+```sh
+vsce package
+```
 
-### 1.0.1
+### License
 
-Fixed issue #.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-### 1.1.0
+## Contributing
 
-Added features X, Y, and Z.
+Contributions are welcome! Please open an issue or submit a pull request.
 
----
+### Additional Notes
 
-## Following extension guidelines
+- Ensure your extension code follows the best practices for VS Code extensions.
+- Keep the extension lightweight and focused on providing the best developer experience for inline HTTP status code suggestions.
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+## Contact
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+For any queries or suggestions, please open an issue on the GitHub repository.
