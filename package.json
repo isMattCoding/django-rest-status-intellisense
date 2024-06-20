@@ -1,0 +1,68 @@
+{
+  "name": "django-rest-status-intellisense",
+  "displayName": "Django Rest Status Intellisense",
+  "description": "Intellisense for Rest Status codes in Django",
+  "version": "0.0.1",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "python",
+        "aliases": [
+          "Python",
+          "python"
+        ],
+        "extensions": [
+          ".py"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "python",
+        "path": "./snippets/python.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "django-rest-status-intellisense.helloWorld",
+        "title": "Hello World"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "yarn run compile-tests && yarn run compile && yarn run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.6",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.90.0",
+    "@typescript-eslint/eslint-plugin": "^7.11.0",
+    "@typescript-eslint/parser": "^7.11.0",
+    "@vscode/test-cli": "^0.0.9",
+    "@vscode/test-electron": "^2.4.0",
+    "eslint": "^8.57.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.4.5",
+    "webpack": "^5.92.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {}
+}
