@@ -26,12 +26,6 @@
         "configuration": "./language-configuration.json"
       }
     ],
-    "snippets": [
-      {
-        "language": "python",
-        "path": "./snippets/python.json"
-      }
-    ],
     "commands": [
       {
         "command": "django-rest-status-intellisense.helloWorld",
