@@ -6,7 +6,7 @@ export function activate(context: vscode.ExtensionContext) {
         { scheme: 'file', language: 'python' },
         {
             provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
-                const linePrefix = document.lineAt(position).text.substr(0, position.character);
+              const linePrefix = document.lineAt(position).text.substr(0, position.character);
                 if (!linePrefix.endsWith('status.')) {
                     return undefined;
                 }
@@ -16,6 +16,12 @@ export function activate(context: vscode.ExtensionContext) {
                     item.detail = 'HTTP Status Code';
                     return item;
                 });
+            },
+            resolveCompletionItem(item: vscode.CompletionItem, token: vscode.CancellationToken) {
+                // Here you can enhance or modify the completion item further
+                // For example, add more details or documentation based on `item.label`
+
+                return item;
             }
         },
         '.' // Trigger completion on '.'
