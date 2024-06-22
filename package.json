@@ -3,10 +3,11 @@
   "displayName": "Django Rest Status Intellisense",
   "description": "Intellisense for Rest Status codes in Django",
   "version": "1.0.0",
-  "publisher": "WMBT Web Services",
+  "publisher": "WMBT-Web-Services",
   "author": {
     "name": "Matthew Clark (@isMattCoding)"
   },
+  "icon": "images/apple-icon.png",
   "license": "MIT",
   "homepage": "https://github.com/isMattCoding/django-rest-status-intellisense",
   "repository": {
