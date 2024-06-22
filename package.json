@@ -2,8 +2,17 @@
   "name": "django-rest-status-intellisense",
   "displayName": "Django Rest Status Intellisense",
   "description": "Intellisense for Rest Status codes in Django",
-  "version": "0.0.2",
+  "version": "1.0.0",
+  "publisher": "WMBT Web Services",
+  "author": {
+    "name": "Matthew Clark (@isMattCoding)",
+  },
   "license": "MIT",
+  "homepage": "https://github.com/isMattCoding/django-rest-status-intellisense",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/isMattCoding/django-rest-status-intellisense.git"
+  },
   "engines": {
     "vscode": "^1.90.0"
   },
@@ -28,8 +37,8 @@
     ],
     "commands": [
       {
-        "command": "django-rest-status-intellisense.helloWorld",
-        "title": "Hello World"
+        "command": "django-rest-status-intellisense.activate",
+        "title": "Django Rest Status Intellisense"
       }
     ]
   },
