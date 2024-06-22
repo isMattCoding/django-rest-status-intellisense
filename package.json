@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "publisher": "WMBT Web Services",
   "author": {
-    "name": "Matthew Clark (@isMattCoding)",
+    "name": "Matthew Clark (@isMattCoding)"
   },
   "license": "MIT",
   "homepage": "https://github.com/isMattCoding/django-rest-status-intellisense",
