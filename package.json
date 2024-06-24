@@ -2,7 +2,7 @@
   "name": "django-rest-status-intellisense",
   "displayName": "Django Rest Status Intellisense",
   "description": "Intellisense for Rest Status codes in Django",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "publisher": "WMBT-Web-Services",
   "author": {
     "name": "Matthew Clark (@isMattCoding)"
