@@ -40,7 +40,7 @@ jobs:
           echo '${{ toJson(steps.package-json.outputs) }}' | jq -r 'to_entries|map("\(.key) -- \(.value)")|.[]'
 
       - name: Simulate Publish VS Code Extension
-        if: steps.package-json.outputs.has-updated
+        if: steps.package-json.outputs.has-updated == 'true'
         env:
           VSCE_PAT: ${{ secrets.AZURE_DEVOPS_TOKEN }}
         run: |
