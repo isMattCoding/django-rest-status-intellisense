@@ -17,19 +17,16 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '20'
 
       - name: Install dependencies
         run: npm install
 
       - name: Check if version bumped
-        uses: johnnybenson/package-json-versioned-action@v1.0.5
+        uses: johnnybenson/package-json-versioned-action@v1.0.9
         id: package-json
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Install jq
-        run: sudo apt-get install -y jq
 
       - name: Output version bump results
         run: |
@@ -37,7 +34,6 @@ jobs:
           echo "previous-version -- ${{ steps.package-json.outputs.previous-version }}"
           echo "version -- ${{ steps.package-json.outputs.version }}"
           echo "Outputs: ${{ toJson(steps.package-json.outputs) }}"
-          echo '${{ toJson(steps.package-json.outputs) }}' | jq -r 'to_entries|map("\(.key) -- \(.value)")|.[]'
 
       - name: Simulate Publish VS Code Extension
         if: steps.package-json.outputs.has-updated == 'true'
