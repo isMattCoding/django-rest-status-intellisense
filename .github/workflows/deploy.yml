@@ -27,6 +27,8 @@ jobs:
         id: package-json
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Output version bump results
         run: |
           echo "has-updated -- ${{ steps.package-json.outputs.has-updated }}"
           echo "previous-version -- ${{ steps.package-json.outputs.previous-version }}"
