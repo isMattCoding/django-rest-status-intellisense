@@ -1,0 +1,45 @@
+name: Test Deploy VS Code Extension
+
+on:
+  push:
+    branches:
+      - main
+      - test-branch  # Add a test branch for testing purposes
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Check if version bumped
+        uses: actions/checkout@v2
+        uses: johnnybenson/package-json-versioned-action@v1.0.5
+        id: package-json
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: echo "has-updated -- ${{ steps.package-json.outputs.has-updated }}"
+        run: echo "previous-version -- ${{ steps.package-json.outputs.previous-version }}"
+        run: echo "version -- ${{ steps.package-json.outputs.version }}"
+        run: echo "all -- ${{ steps.package-json.outputs }}"
+
+      - name: Simulate Publish VS Code Extension
+        # if: steps.package-json.outcome == 'success'
+        # env:
+        #   VSCE_PAT: ${{ secrets.AZURE_DEVOPS_TOKEN }}
+        # run: |
+        #   echo "Version bumped detected. Would publish now."
+        #   # Uncomment the line below to actually install vsce for a full test without publishing
+        #   # npm install -g vsce
+        #   # Uncomment the line below to simulate vsce publish
+        #   # echo "vsce publish --no-publish"
