@@ -1,0 +1,56 @@
+name: Deploy VS Code Extension
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check_version:
+    runs-on: ubuntu-latest
+
+    outputs:
+      has_updated: ${{ steps.package-json.outputs.has-updated }}
+      previous_version: ${{ steps.package-json.outputs.previous-version }}
+      version: ${{ steps.package-json.outputs.version }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Check if version bumped
+        id: package-json
+        uses: johnnybenson/package-json-versioned-action@v1.0.9
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Output version bump results
+        run: |
+          echo "has-updated -- ${{ steps.package-json.outputs.has-updated }}"
+          echo "previous-version -- ${{ steps.package-json.outputs.previous-version }}"
+          echo "version -- ${{ steps.package-json.outputs.version }}"
+          echo "Outputs: ${{ toJson(steps.package-json.outputs) }}"
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: check_version
+    if: needs.check_version.outputs.has_updated == 'true'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Simulate Publish VS Code Extension
+        env:
+          VSCE_PAT: ${{ secrets.AZURE_DEVOPS_TOKEN }}
+        run: |
+          npm install -g vsce
+          vsce publish
