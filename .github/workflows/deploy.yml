@@ -39,13 +39,13 @@ jobs:
           echo "Outputs: ${{ toJson(steps.package-json.outputs) }}"
           echo '${{ toJson(steps.package-json.outputs) }}' | jq -r 'to_entries|map("\(.key) -- \(.value)")|.[]'
 
-      # - name: Simulate Publish VS Code Extension
-        # if: steps.package-json.outcome == 'success'
-        # env:
-        #   VSCE_PAT: ${{ secrets.AZURE_DEVOPS_TOKEN }}
-        # run: |
-        #   echo "Version bumped detected. Would publish now."
-        #   # Uncomment the line below to actually install vsce for a full test without publishing
-        #   # npm install -g vsce
-        #   # Uncomment the line below to simulate vsce publish
-        #   # echo "vsce publish --no-publish"
+      - name: Simulate Publish VS Code Extension
+        if: steps.package-json.outputs.has-updated
+        env:
+          VSCE_PAT: ${{ secrets.AZURE_DEVOPS_TOKEN }}
+        run: |
+          echo "Version bumped detected. Would publish now."
+          # Uncomment the line below to actually install vsce for a full test without publishing
+          # npm install -g vsce
+          # Uncomment the line below to simulate vsce publish
+          # echo "vsce publish --no-publish"
