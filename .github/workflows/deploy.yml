@@ -33,7 +33,7 @@ jobs:
         run: echo "version -- ${{ steps.package-json.outputs.version }}"
         run: echo "all -- ${{ steps.package-json.outputs }}"
 
-      - name: Simulate Publish VS Code Extension
+      # - name: Simulate Publish VS Code Extension
         # if: steps.package-json.outcome == 'success'
         # env:
         #   VSCE_PAT: ${{ secrets.AZURE_DEVOPS_TOKEN }}
